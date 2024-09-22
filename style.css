@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(38, 38, 46);
+}
+.page-container {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.board__container {
+  box-sizing: content-box;
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgb(96, 96, 96);
+  background-color: rgb(224, 224, 224);
+}
+.flex__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* [class^="cell"] {
+  height: calc(600px / 16);
+  width: calc(600px / 16);
+} */
+
+.cell--change--color {
+  background-color: rgb(245, 175, 186);
+}
+
+button {
+  background-color: rgb(115, 194, 115);
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 20px;
+  color: white;
+  font-size: 18px;
+}
