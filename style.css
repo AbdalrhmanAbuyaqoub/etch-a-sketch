@@ -36,3 +36,16 @@ button {
   color: white;
   font-size: 18px;
 }
+
+#solid__mode__button {
+  background-color: rgb(55, 54, 54);
+}
+
+#rgb__mode__button {
+  background: rgb(63, 94, 251);
+  background: linear-gradient(
+    131deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+}
