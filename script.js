@@ -19,9 +19,13 @@ function createGrid() {
 createGrid();
 
 board.addEventListener("mouseover", (e) => {
-  let currentCell = e.target.className;
-  if (currentCell.includes("cell")) {
-    e.target.classList.add("cell--change--color");
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  let currentCell = e.target;
+  if (currentCell.className.includes("cell")) {
+    currentCell.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
   }
 });
 

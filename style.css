@@ -26,14 +26,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
 }
-/* [class^="cell"] {
-  height: calc(600px / 16);
-  width: calc(600px / 16);
-} */
-
-.cell--change--color {
-  background-color: rgb(245, 175, 186);
-}
 
 button {
   background-color: rgb(115, 194, 115);
