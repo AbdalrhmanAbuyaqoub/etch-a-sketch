@@ -4,11 +4,13 @@ const cell = document.querySelector("[class^='cell']");
 const newGridButton = document.querySelector("#new__grid__button");
 const rgbButton = document.querySelector("#rgb__mode__button");
 const solidButton = document.querySelector("#solid__mode__button");
-const BOARD_WIDTH = 600;
+let colorPicker = document.querySelector("#color__picker");
+const BOARD_WIDTH = board.offsetWidth;
 
 let size = 16;
 let height = BOARD_WIDTH / size;
-let colorMode = true;
+let colorMode = "rgb";
+console.log(height);
 
 function createGrid() {
   for (let i = 1; i <= size * size; i++) {
@@ -31,12 +33,17 @@ function getRandomColor() {
 function setBackgroundColor(currentCell, color) {
   if (currentCell.style.backgroundColor === board.style.backgroundColor) {
     currentCell.style.backgroundColor = color;
+    currentCell.classList.add(colorMode);
     currentCell.style.opacity = 0.1;
     hasColor = true;
-  } else if (+currentCell.style.opacity < 1) {
+  } else if (
+    +currentCell.style.opacity < 1 &&
+    currentCell.classList.contains(colorMode)
+  ) {
     currentCell.style.opacity = +currentCell.style.opacity + 0.1;
   }
-  console.log(currentCell.style.backgroundColor);
+
+  console.log(currentCell.className);
 }
 
 board.addEventListener("mouseover", (e) => {
@@ -44,11 +51,11 @@ board.addEventListener("mouseover", (e) => {
   if (!currentCell.className.includes("cell")) return;
 
   switch (colorMode) {
-    case true: //.......RGB
+    case "rgb": //.......RGB
       setBackgroundColor(currentCell, getRandomColor());
       break;
-    case false: //....solid
-      setBackgroundColor(currentCell, "rgb(0,0,0)");
+    case "solid": //....solid
+      setBackgroundColor(currentCell, colorPicker.value);
       break;
   }
 });
@@ -68,11 +75,26 @@ newGridButton.addEventListener("click", () => {
 });
 
 rgbButton.addEventListener("click", () => {
-  colorMode = true;
-  console.log(colorMode);
+  colorMode = "rgb";
+  changeOpacity();
 });
 
 solidButton.addEventListener("click", () => {
-  colorMode = false;
-  console.log(colorMode);
+  colorMode = "solid";
+  changeOpacity();
 });
+
+function changeOpacity() {
+  switch (colorMode) {
+    case "rgb":
+      solidButton.style.opacity = 0.5;
+      rgbButton.style.opacity = 1;
+      break;
+
+    case "solid":
+      rgbButton.style.opacity = 0.5;
+      solidButton.style.opacity = 1;
+      break;
+  }
+}
+changeOpacity();
